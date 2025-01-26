@@ -17,10 +17,24 @@ class User(Base):
     profit_per_hour = Column(Float, default=0.0)
     profit_per_tap = Column(Float, default=1.0)
 
+    def __repr__(self):
+        return (f"<User(user_id={self.user_id}, username='{self.username}', coins={self.coins}, "
+                f"level={self.level}, profit_per_hour={self.profit_per_hour}, "
+                f"profit_per_tap={self.profit_per_tap})>")
+
 # Настройка базы данных
-engine = create_engine('sqlite:///users.db')
+DATABASE_URL = 'sqlite:///users.db'
+engine = create_engine(DATABASE_URL, echo=True)  # Добавлен echo=True для логирования SQL-запросов
 Base.metadata.create_all(engine)
 
 # Создание сессии
 Session = sessionmaker(bind=engine)
 session = Session()
+
+# Вспомогательная функция для отладки
+if __name__ == "__main__":
+    # Проверка базы данных
+    print("Существующие пользователи:")
+    users = session.query(User).all()
+    for user in users:
+        print(user)
