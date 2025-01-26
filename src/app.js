@@ -10,33 +10,37 @@ document.addEventListener('DOMContentLoaded', () => {
         progressBar.style.width = `${Math.min(percentage, 100)}%`;
     }
 
-    function updateCoinsOnServer() {
-        fetch('/update_coins', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ user_id: userId, coins: score })
-        });
-    }
+    async function updateCoinsOnServer() {
+        try {
+            console.log('Updating coins on server with:', { user_id: userId, coins: score });
+            const response = await fetch('/update_coins', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'User-ID': userId // Ensure the header matches the backend
+                },
+                body: JSON.stringify({ coins: score })
+            });
 
-    function updateProfitPerHourOnServer(profit) {
-        fetch('/update_profit_per_hour', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ user_id: userId, profit_per_hour: profit })
-        });
+            const data = await response.json();
+
+            if (!response.ok || !data.success) {
+                console.error('Error updating coins:', data.error || 'Unknown error');
+            } else {
+                console.log('Coins updated successfully:', data);
+            }
+        } catch (error) {
+            console.error('Network error:', error);
+        }
     }
 
     hamster.addEventListener('click', (event) => {
         const rect = hamster.getBoundingClientRect();
-        const offfsetX = event.clientX - rect.left - rect.width / 2;
-        const offfsetY = event.clientY - rect.top - rect.height / 2;
+        const offsetX = event.clientX - rect.left - rect.width / 2;
+        const offsetY = event.clientY - rect.top - rect.height / 2;
         const DEG = 40;
-        const tiltX = (offfsetY / rect.height) * DEG;
-        const tiltY = (offfsetX / rect.width) * -DEG;
+        const tiltX = (offsetY / rect.height) * DEG;
+        const tiltY = (offsetX / rect.width) * -DEG;
 
         hamster.style.setProperty('--tiltX', `${tiltX}deg`);
         hamster.style.setProperty('--tiltY', `${tiltY}deg`);
