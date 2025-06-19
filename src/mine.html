@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mine</title>
+    <link rel="stylesheet" href="/src/mine.css" />
+    <meta name="user-id" content="{{ user_id }}">
+    <meta name="username" content="{{ username }}">
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Market</h1>
+        
+        
+        <div id="copy-notification">Card upgrade!</div>
+        <div id="copy-notification-false">not enough money!!</div>
+
+        <div class="hour" id="block_hour">
+            <div class="card" id="token-card">
+                <div class="card-icons">
+                    <img src="/src/assets/token.png" alt="Locked">
+                    <div class="card-content">
+                        <div class="card-title">Token</div>
+                        <div class="card-profit">Прибыль в час</div>
+                        <div class="profit-value">
+                            <img src="/src/assets/coin.png" alt="Coin" class="coin-icon-profit" id="coin-icon-profit">
+                            <p>+{{ card_data_token.profit }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span>lvl {{ card_data_token.level}}</span>
+                    <span>{{ card_data_token.cost }}</span>
+                </div>
+                <button class="upgrade" data-card-type="token">Улучшить</button>
+            </div>
+            <div class="card" id="staking-card">
+                <div class="card-icons">
+                    <img src="/src/assets/staking.png" alt="Locked">
+                    <div class="card-content">
+                        <div class="card-title">Staking</div>
+                        <div class="card-profit">Прибыль в час</div>
+                        <div class="profit-value">
+                            <img src="/src/assets/coin.png" alt="Coin" class="coin-icon-profit" id="coin-icon-profit">
+                            <p>+{{ card_data_staking.profit }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span>lvl {{ card_data_staking.level}}</span>
+                    <span>{{ card_data_staking.cost }}</span>
+                </div>
+                <button class="upgrade" data-card-type="staking">Улучшить</button>
+            </div>
+            
+            <div class="card" id="genesis-card">
+                <div class="card-icons">
+                    <img src="/src/assets/genesis.png" alt="Locked">
+                    <div class="card-content">
+                        <div class="card-title">Genesis</div>
+                        <div class="card-profit">Прибыль в час</div>
+                        <div class="profit-value">
+                            <img src="/src/assets/coin.png" alt="Coin" class="coin-icon-profit" id="coin-icon-profit">
+                            <p>+{{ card_data_genesis.profit }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span>lvl {{ card_data_genesis.level }}</span>
+                    <span>{{ card_data_genesis.cost}}</span>
+                </div>
+                <button class="upgrade" data-card-type="genesis">Улучшить</button>
+            </div>
+
+            <div class="card" id="echeleon-card">
+                <div class="card-icons">
+                    <img src="/src/assets/echeleon.png" alt="Locked">
+                    <div class="card-content">
+                        <div class="card-title">Echeleon</div>
+                        <div class="card-profit">Прибыль в час</div>
+                        <div class="profit-value">
+                            <img src="/src/assets/coin.png" alt="Coin" class="coin-icon-profit" id="coin-icon-profit">
+                            <p>+{{ card_data_echeleon.profit }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span>lvl {{ card_data_echeleon.level }}</span>
+                    <span>{{ card_data_echeleon.cost }}</span>
+                </div>
+                <button class="upgrade" data-card-type="echeleon">Улучшить</button>
+            </div>
+
+            <div class="card" id="ledger-card">
+                <div class="card-icons">
+                    <img src="/src/assets/ledger.png" alt="Locked">
+                    <div class="card-content">
+                        <div class="card-title">Ledger</div>
+                        <div class="card-profit">Прибыль в час</div>
+                        <div class="profit-value">
+                            <img src="/src/assets/coin.png" alt="Coin" class="coin-icon-profit" id="coin-icon-profit">
+                            <p>+{{ card_data_ledger.profit }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span>lvl {{ card_data_ledger.level }}</span>
+                    <span>{{ card_data_ledger.cost }}</span>
+                </div>
+                <button class="upgrade" data-card-type="ledger">Улучшить</button>
+            </div>
+            
+
+
+            <div class="card" id="quantum-card">
+                <div class="card-icons">
+                    <img src="/src/assets/quantum.png" alt="Locked">
+                    <div class="card-content">
+                        <div class="card-title">Quantum</div>
+                        <div class="card-profit">Прибыль в час</div>
+                        <div class="profit-value">
+                            <img src="/src/assets/coin.png" alt="Coin" class="coin-icon-profit" id="coin-icon-profit">
+                            <p>+{{ card_data_quantum.profit }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span>lvl {{ card_data_quantum.level }}</span>
+                    <span>{{ card_data_quantum.cost }}</span>
+                </div>
+                <button class="upgrade" data-card-type="quantum">Улучшить</button>
+            </div>
+            <div class="multitap" id="multitap-card">
+                <div class="multitap-icons">
+                    <img src="/src/assets/click.png" alt="Locked">
+                    <div class="card-content">
+                        <div class="card-title-multitap">Multitap</div>
+                        <div class="profit-value-multitap">
+                            <img src="/src/assets/coin.png" alt="Coin" id="multitap-coin-icon-profit">
+                            <p>{{ card_data_multitap.cost }}</p>
+                            <span>lvl {{ card_data_multitap.level}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="botton-border"></div>
+                <button class="upgrade" data-card-type="multitap">Улучшить</button>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="nav">        
+        <a href="/?user_id={{ user_id }}&username={{ username }}" class="nav-button">Exchange</a>
+        <a href="/mine?user_id={{ user_id }}&username={{ username }}" class="nav-button">Mine</a>
+        <a href="/friends?user_id={{ user_id }}&username={{ username }}" class="nav-button">Friends</a>
+        <a href="/earn?user_id={{ user_id }}&username={{ username }}" class="nav-button">Earn</a>        
+        <a href="/airdrop?user_id={{ user_id }}&username={{ username }}" class="nav-button">Airdrop</a>
+    </div>
+    <div class="upgrade-overlay" id="upgrade-overlay"></div>
+    <div class="upgrade-block" id="upgrade-block">
+        <div class="upgrade-top">
+            <img src="/src/assets/click.png" class="upgrade-image">
+ 
+        </div>
+        <h1></h1>
+        <p class="upgrade-description"></p>
+        <div class="upgrade-footer">
+            <img src="/src/assets/coin.png" alt="Coin">
+            <p class="upgrade-cost" id="upgrade-cost"></p>
+            <p class="upgrade-level" id="upgrade-level"></p>
+        </div>
+        <button class="upgrade-action">Улучшить</button>
+    </div>
+    <script src="/src/mine.js"></script>
+</body>
+</html>
