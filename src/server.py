@@ -10,7 +10,7 @@ from db_utils import get_card_data, update_card_level, session, User
 import datetime
 
 
-TOKEN = '7930529716:AAF5TYEKKTsG_jUD3k0gtzIa3YvAfikUIdk' #Ваш токен бота
+TOKEN = '7930529716:AAF5TYEKKTsG_jUtzIa3YvAfikUIdk' #Ваш токен бота
 apiserv = "https://e0a0-57-129-20-199.ngrok-free.app"  #ссылка вашего сервера
 your_channel = "https://t.me/your_channel" #ваш тг канал
 
